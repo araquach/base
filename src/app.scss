@@ -1,0 +1,8 @@
+@import "node_modules/bulma/bulma.sass";
+
+.hero {
+  background: url("images/base_bground.jpg") center center;
+  background-size: cover;
+  height: 100%;
+  padding-left: 5rem;
+}
