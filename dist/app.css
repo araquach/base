@@ -11740,9 +11740,12 @@ label.panel-block:hover {
 }
 
 .hero {
-  background: url(/images/base_bground.jpg?74a8471b3675d81141b3d2fc1e6fc0e3) center center;
+  background: url("/dist/images/base_bground.jpg") center center;
   background-size: cover;
   height: 100%;
-  padding-left: 5rem;
+}
+
+.hero .subtitle {
+  margin-top: 3rem;
 }
 
