@@ -6,7 +6,7 @@
                     <div class="container columns is-centered">
                         <div class="column is-5">
                             <home-component v-show="page"></home-component>
-                            <info-component v-show="page"></info-component>
+<!--                            <info-component v-show="page"></info-component>-->
                         </div>
                     </div>
                 </div>
