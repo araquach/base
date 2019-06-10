@@ -1,0 +1,29 @@
+{{define "main"}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Base Hairdressing</title>
+    <link rel="stylesheet" href="../dist/app.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <section class="hero is-fullheight">
+                <div class="hero-body">
+                    <div class="container columns is-centered">
+                        {{template "content"}}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="../dist/app.js"></script>
+</body>
+</html>
+
+{{end}}

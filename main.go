@@ -9,11 +9,13 @@ import (
 )
 
 var homeTemplate *template.Template
+var infoTemplate *template.Template
 
 
 func init() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", home)
+	r.HandleFunc("/info", info)
 
 	// The path "/" matches everything not matched by some other path.
 	http.Handle("/", r)
@@ -21,8 +23,15 @@ func init() {
 
 func main() {
 	var err error
+
 	homeTemplate, err = template.ParseFiles(
-		"views/home.gohtml")
+		"views/layouts/main.gohtml", "views/home.gohtml")
+	if err != nil {
+		panic(err)
+	}
+
+	infoTemplate, err = template.ParseFiles(
+		"views/layouts/main.gohtml", "views/info.gohtml")
 	if err != nil {
 		panic(err)
 	}
@@ -31,6 +40,13 @@ func main() {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	if err := homeTemplate.Execute(w, nil); err != nil {
+		panic(err)
+	}
+}
+
+func info(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	if err := homeTemplate.Execute(w, nil); err != nil {
 		panic(err)
