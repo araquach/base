@@ -15,6 +15,10 @@
 runtime: go
 api_version: go1
 
+skip_files:
+
+  - node_modules/
+
 handlers:
 
   # All URLs are handled by the Go application script
