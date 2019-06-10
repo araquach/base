@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="column is-5">
         <figure class  ="image">
             <img src="dist/images/base_logo.png" alt="Base Hairdressing">
         </figure>

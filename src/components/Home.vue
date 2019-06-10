@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="column is-5">
         <h1 class="is-hidden">
             Base Hairdressing
         </h1>
