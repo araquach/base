@@ -11,6 +11,19 @@ import (
 var homeTemplate *template.Template
 var infoTemplate *template.Template
 
+func home(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	if err := homeTemplate.Execute(w, nil); err != nil {
+		panic(err)
+	}
+}
+
+func info(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	if err := infoTemplate.Execute(w, nil); err != nil {
+		panic(err)
+	}
+}
 
 func init() {
 	r := mux.NewRouter()
@@ -23,32 +36,15 @@ func init() {
 
 func main() {
 	var err error
-
 	homeTemplate, err = template.ParseFiles(
-		"views/layouts/main.gohtml", "views/home.gohtml")
+		"views/pages/home.gohtml")
 	if err != nil {
 		panic(err)
 	}
-
 	infoTemplate, err = template.ParseFiles(
-		"views/layouts/main.gohtml", "views/info.gohtml")
+		"views/pages/info.gohtml")
 	if err != nil {
 		panic(err)
 	}
-
 	appengine.Main() // Starts the server to receive requests
-}
-
-func home(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	if err := homeTemplate.Execute(w, nil); err != nil {
-		panic(err)
-	}
-}
-
-func info(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	if err := homeTemplate.Execute(w, nil); err != nil {
-		panic(err)
-	}
 }
