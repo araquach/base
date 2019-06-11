@@ -11739,8 +11739,12 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
+body {
+  background-color: black;
+}
+
 .hero {
-  background: url("/dist/images/base_bground.jpg") center center;
+  background: url(/images/base_bground.jpg?ac8e6da2978a30cc473d82f3b67690a6) center center;
   background-size: cover;
   height: 100%;
 }
