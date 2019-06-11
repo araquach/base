@@ -110,6 +110,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -607,23 +609,25 @@ var render = function() {
     _c("div", [
       _c("section", { staticClass: "hero is-fullheight" }, [
         _c("div", { staticClass: "hero-body" }, [
-          _c(
-            "div",
-            { staticClass: "container columns is-centered" },
-            [
-              _c("home-component", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.page,
-                    expression: "page"
-                  }
-                ]
-              })
-            ],
-            1
-          )
+          _c("div", { staticClass: "container columns is-centered" }, [
+            _c(
+              "div",
+              { staticClass: "column is-5" },
+              [
+                _c("home-component", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.page,
+                      expression: "page"
+                    }
+                  ]
+                })
+              ],
+              1
+            )
+          ])
         ])
       ])
     ])
@@ -658,7 +662,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-5" }, [
+    return _c("div", [
       _c("h1", { staticClass: "is-hidden" }, [
         _vm._v("\n        Base Hairdressing\n    ")
       ]),
@@ -713,7 +717,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-5" }, [
+    return _c("div", [
       _c("figure", { staticClass: "image" }, [
         _c("img", {
           attrs: { src: "dist/images/base_logo.png", alt: "Base Hairdressing" }
