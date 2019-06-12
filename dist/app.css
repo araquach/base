@@ -11749,6 +11749,10 @@ p {
   margin-bottom: 1.2rem;
 }
 
+.label {
+  color: #FFF;
+}
+
 .hero {
   background: url("/dist/images/base_bground.jpg") center center;
   background-size: cover;

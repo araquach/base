@@ -13,9 +13,9 @@
         <h2 class="subtitle is-2 has-text-white has-text-centered">Calling all Freelance & Established Stylists!</h2>
         <p class="is-size-4">We have chair renting opportunities available in a brand new, seriously cool salon in Warrington
             Town Centre, close to the upcoming new development.</p>
-        <p>The salon is newly refurbished in an industrial loft style. 16 styling stations, 5 backwashes. Perfect
-            for anyone who wants to work in a cutting edge environment with the best equipment at hand. Close to the
-            new multi storey car park. The site was previously a successful salon for 15 years.</p>
+        <p>The salon is newly refurbished in an industrial loft style with 16 styling stations &amp; 5 backwashes. Perfect
+            for anyone who wants to work in a cutting edge environment with the best equipment at hand. </p>
+        <p>Close to the new multi storey car park. The site was previously a successful salon for 15 years.</p>
         <ul>
             <li>Fixed weekly/monthly cost (no commission or split fees)</li>
             <li>Access to stock on site - cheaper cost than wholesalers</li>

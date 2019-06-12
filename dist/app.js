@@ -665,7 +665,13 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", [
         _vm._v(
-          "The salon is newly refurbished in an industrial loft style. 16 styling stations, 5 backwashes. Perfect\n        for anyone who wants to work in a cutting edge environment with the best equipment at hand. Close to the\n        new multi storey car park. The site was previously a successful salon for 15 years."
+          "The salon is newly refurbished in an industrial loft style with 16 styling stations & 5 backwashes. Perfect\n        for anyone who wants to work in a cutting edge environment with the best equipment at hand. "
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Close to the new multi storey car park. The site was previously a successful salon for 15 years."
         )
       ]),
       _vm._v(" "),
@@ -732,9 +738,107 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Register")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "section info-copy" }, [
+      _c("h1", { staticClass: "is-hidden" }, [
+        _vm._v("\n        Base Hairdressing\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "column is-6 has-text-centered" }, [
+          _c("figure", { staticClass: "image" }, [
+            _c("img", {
+              attrs: {
+                src: "dist/images/base_logo.svg",
+                alt: "Base Hairdressing"
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "h2",
+        { staticClass: "subtitle is-3 has-text-white has-text-centered" },
+        [_vm._v("Register your interest with us!")]
+      ),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "If Base seems like the perfect salon environment for you, then fill in the form and we'll be in touch soon! "
+        )
+      ]),
+      _vm._v(" "),
+      _c("form", { attrs: { action: "/register" } }, [
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Name")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              staticClass: "input",
+              attrs: { type: "text", placeholder: "Your Name" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Mobile Number")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              staticClass: "input",
+              attrs: { type: "text", placeholder: "Your Mobile Number" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Current Position")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("div", { staticClass: "select" }, [
+              _c("select", [
+                _c("option", { attrs: { value: "default" } }, [
+                  _vm._v("Please select")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "employed" } }, [
+                  _vm._v("Employed Stylist")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "chair renter" } }, [
+                  _vm._v("Chair Renter")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "mobile" } }, [
+                  _vm._v("Mobile Hairdresser")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "other" } }, [_vm._v("Other")])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("div", { staticClass: "control" }, [
+            _c("button", { staticClass: "button is-primary" }, [
+              _vm._v("Submit")
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
