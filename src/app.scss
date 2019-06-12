@@ -2,14 +2,35 @@
 
 body {
   background-color: black;
+  color: #FFF;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 .hero {
-  background: url("dist/images/base_bground.jpg") center center;
+  background: url("/dist/images/base_bground.jpg") center center;
   background-size: cover;
   height: 100%;
 
   .subtitle {
     margin-top: 3rem;
   }
+}
+
+.info-copy {
+  background-color: rgba(0, 0, 0, .75);
+
+  ul {
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    li {
+      font-size: 1.2rem;
+      line-height: 3rem;
+      list-style-type: square;
+    }
+  }
+
 }
