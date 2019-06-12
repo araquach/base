@@ -653,7 +653,10 @@ var staticRenderFns = [
       _vm._v(" "),
       _c(
         "h2",
-        { staticClass: "subtitle is-2 has-text-white has-text-centered" },
+        {
+          staticClass:
+            "subtitle is-2 is-4-mobile has-text-white has-text-centered"
+        },
         [_vm._v("Calling all Freelance & Established Stylists!")]
       ),
       _vm._v(" "),
@@ -703,7 +706,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", { staticClass: "has-text-centered is-size-4" }, [
         _vm._v(
-          "If this sounds like a great opportunity then click th button and send us your info!"
+          "If this sounds like a great opportunity then click the button and send us your info!"
         )
       ]),
       _vm._v(" "),
