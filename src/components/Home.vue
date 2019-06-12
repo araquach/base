@@ -11,7 +11,7 @@
         </h2>
         <div class="has-text-centered">
             <br>
-            <a href="/info" class="button is-white has-text">Find out more</a>
+            <a href="/info" class="button is-primary has-text">Find out more</a>
         </div>
     </div>
 </template>

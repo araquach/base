@@ -1,13 +1,15 @@
 <template>
-    <div class="section info-copy">
+    <div class="section form-copy">
         <h1 class="is-hidden">
             Base Hairdressing
         </h1>
         <div class="columns is-centered">
             <div class="column is-6 has-text-centered">
-                <figure class="image">
-                    <img src="dist/images/base_logo.svg" alt="Base Hairdressing">
-                </figure>
+                <a href="/">
+                    <figure class="image">
+                        <img src="dist/images/base_logo.svg" alt="Base Hairdressing">
+                    </figure>
+                </a>
             </div>
         </div>
         <h2 class="subtitle is-3 has-text-white has-text-centered">Register your interest with us!</h2>

@@ -5,29 +5,34 @@
         </h1>
         <div class="columns is-centered">
             <div class="column is-6 has-text-centered">
-                <figure class="image">
-                    <img src="dist/images/base_logo.svg" alt="Base Hairdressing">
-                </figure>
+                <a href="/">
+                    <figure class="image">
+                        <img src="dist/images/base_logo.svg" alt="Base Hairdressing">
+                    </figure>
+                </a>
             </div>
         </div>
         <h2 class="subtitle is-2 is-4-mobile has-text-white has-text-centered">Calling all Freelance & Established Stylists!</h2>
-        <p class="is-size-4">We have chair renting opportunities available in a brand new, seriously cool salon in Warrington
+        <p class="is-size-5">We have chair renting opportunities available in a brand new, uber-cool salon in Warrington
             Town Centre, close to the upcoming new development.</p>
-        <p>The salon is newly refurbished in an industrial loft style with 16 styling stations &amp; 5 backwashes. Perfect
-            for anyone who wants to work in a cutting edge environment with the best equipment at hand. </p>
-        <p>Close to the new multi storey car park. The site was previously a successful salon for 15 years.</p>
+        <p>The salon is newly refurbished in an industrial loft style with 16 styling stations and 5 backwashes. Perfect
+            for anyone who wants to work in a cutting edge environment with the best equipment on hand. </p>
+        <p>Close to the new multi storey car park, the site was previously a successful salon for 15 years.</p>
+
+        <h2 class="subtitle is-4 has-text-white has-text-centered">Check out the benefits of being a part of Base</h2>
+
         <ul>
             <li>Fixed weekly/monthly cost (no commission or split fees)</li>
             <li>Access to stock on site - cheaper cost than wholesalers</li>
             <li>Backup and support staff on hand - the salon is doubling as a training academy</li>
-            <li>Business Backup and support from people who have been in the industry for over 20 years.</li>
-            <li>Freedom and flexibility to work the hours that suit you</li>
+            <li>Business backup and support from people who have been in the industry for over 20 years.</li>
+            <li>Freedom and flexibility to work the hours that suit you!</li>
         </ul>
 
         <p class="has-text-centered is-size-4">If this sounds like a great opportunity then click the button and send us your info!</p>
         <br>
         <div class="has-text-centered">
-        <a href="/register" class="button">Register Interest</a>
+        <a href="/register" class="button is-primary">Register Interest</a>
         </div>
     </div>
 </template>

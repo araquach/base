@@ -598,7 +598,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "a",
-          { staticClass: "button is-white has-text", attrs: { href: "/info" } },
+          {
+            staticClass: "button is-primary has-text",
+            attrs: { href: "/info" }
+          },
           [_vm._v("Find out more")]
         )
       ])
@@ -640,13 +643,15 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "columns is-centered" }, [
         _c("div", { staticClass: "column is-6 has-text-centered" }, [
-          _c("figure", { staticClass: "image" }, [
-            _c("img", {
-              attrs: {
-                src: "dist/images/base_logo.svg",
-                alt: "Base Hairdressing"
-              }
-            })
+          _c("a", { attrs: { href: "/" } }, [
+            _c("figure", { staticClass: "image" }, [
+              _c("img", {
+                attrs: {
+                  src: "dist/images/base_logo.svg",
+                  alt: "Base Hairdressing"
+                }
+              })
+            ])
           ])
         ])
       ]),
@@ -660,23 +665,29 @@ var staticRenderFns = [
         [_vm._v("Calling all Freelance & Established Stylists!")]
       ),
       _vm._v(" "),
-      _c("p", { staticClass: "is-size-4" }, [
+      _c("p", { staticClass: "is-size-5" }, [
         _vm._v(
-          "We have chair renting opportunities available in a brand new, seriously cool salon in Warrington\n        Town Centre, close to the upcoming new development."
+          "We have chair renting opportunities available in a brand new, uber-cool salon in Warrington\n        Town Centre, close to the upcoming new development."
         )
       ]),
       _vm._v(" "),
       _c("p", [
         _vm._v(
-          "The salon is newly refurbished in an industrial loft style with 16 styling stations & 5 backwashes. Perfect\n        for anyone who wants to work in a cutting edge environment with the best equipment at hand. "
+          "The salon is newly refurbished in an industrial loft style with 16 styling stations and 5 backwashes. Perfect\n        for anyone who wants to work in a cutting edge environment with the best equipment on hand. "
         )
       ]),
       _vm._v(" "),
       _c("p", [
         _vm._v(
-          "Close to the new multi storey car park. The site was previously a successful salon for 15 years."
+          "Close to the new multi storey car park, the site was previously a successful salon for 15 years."
         )
       ]),
+      _vm._v(" "),
+      _c(
+        "h2",
+        { staticClass: "subtitle is-4 has-text-white has-text-centered" },
+        [_vm._v("Check out the benefits of being a part of Base")]
+      ),
       _vm._v(" "),
       _c("ul", [
         _c("li", [
@@ -695,12 +706,12 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("li", [
           _vm._v(
-            "Business Backup and support from people who have been in the industry for over 20 years."
+            "Business backup and support from people who have been in the industry for over 20 years."
           )
         ]),
         _vm._v(" "),
         _c("li", [
-          _vm._v("Freedom and flexibility to work the hours that suit you")
+          _vm._v("Freedom and flexibility to work the hours that suit you!")
         ])
       ]),
       _vm._v(" "),
@@ -713,9 +724,11 @@ var staticRenderFns = [
       _c("br"),
       _vm._v(" "),
       _c("div", { staticClass: "has-text-centered" }, [
-        _c("a", { staticClass: "button", attrs: { href: "/register" } }, [
-          _vm._v("Register Interest")
-        ])
+        _c(
+          "a",
+          { staticClass: "button is-primary", attrs: { href: "/register" } },
+          [_vm._v("Register Interest")]
+        )
       ])
     ])
   }
@@ -748,20 +761,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "section info-copy" }, [
+    return _c("div", { staticClass: "section form-copy" }, [
       _c("h1", { staticClass: "is-hidden" }, [
         _vm._v("\n        Base Hairdressing\n    ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "columns is-centered" }, [
         _c("div", { staticClass: "column is-6 has-text-centered" }, [
-          _c("figure", { staticClass: "image" }, [
-            _c("img", {
-              attrs: {
-                src: "dist/images/base_logo.svg",
-                alt: "Base Hairdressing"
-              }
-            })
+          _c("a", { attrs: { href: "/" } }, [
+            _c("figure", { staticClass: "image" }, [
+              _c("img", {
+                attrs: {
+                  src: "dist/images/base_logo.svg",
+                  alt: "Base Hairdressing"
+                }
+              })
+            ])
           ])
         ])
       ]),
@@ -13155,8 +13170,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/adamcarter/go/src/base/src/app.js */"./src/app.js");
-module.exports = __webpack_require__(/*! /Users/adamcarter/go/src/base/src/app.scss */"./src/app.scss");
+__webpack_require__(/*! /Users/adam-macbook/go/src/base/src/app.js */"./src/app.js");
+module.exports = __webpack_require__(/*! /Users/adam-macbook/go/src/base/src/app.scss */"./src/app.scss");
 
 
 /***/ })

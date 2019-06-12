@@ -17,7 +17,7 @@ api_version: go1
 
 skip_files:
 
-  - node_modules/
+  - ^.*node_modules(/.*)?
 
 handlers:
 
