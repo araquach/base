@@ -39,8 +39,8 @@ func faviconHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	//port := os.Getenv("PORT")
-	port := "5050"
+	port := os.Getenv("PORT")
+	// port := "5050"
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
