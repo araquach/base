@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gorilla/mux"
-	"google.golang.org/appengine"
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -12,20 +12,6 @@ var (
 	tplInfo *template.Template
 	tplRegister *template.Template
 )
-
-func init() {
-	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
-	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
-	tplRegister = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/register.gohtml"))
-
-	r := mux.NewRouter()
-	r.HandleFunc("/", home)
-	r.HandleFunc("/info", info)
-	r.HandleFunc("/register", register)
-
-	// The path "/" matches everything not matched by some other path.
-	http.Handle("/", r)
-}
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
@@ -48,6 +34,44 @@ func register(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func faviconHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "/public/images/favicon.ico")
+}
+
 func main() {
-	appengine.Main() // Starts the server to receive requests
+	//port := os.Getenv("PORT")
+	port := "5050"
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
+	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
+	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
+	tplRegister = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/register.gohtml"))
+
+	r := mux.NewRouter()
+	r.HandleFunc("/", home)
+	r.HandleFunc("/info", info)
+	r.HandleFunc("/register", register)
+
+	// Styles
+	assetHandler := http.FileServer(http.Dir("./dist/"))
+	assetHandler = http.StripPrefix("/dist/", assetHandler)
+	r.PathPrefix("/dist/").Handler(assetHandler)
+
+	// JS
+	jsHandler := http.FileServer(http.Dir("./dist/"))
+	jsHandler = http.StripPrefix("/dist/", jsHandler)
+	r.PathPrefix("/dist/").Handler(jsHandler)
+
+	//Images
+	imageHandler := http.FileServer(http.Dir("./dist/images/"))
+	r.PathPrefix("/dist/images/").Handler(http.StripPrefix("/dist/images/", imageHandler))
+
+
+	http.HandleFunc("/favicon.ico", faviconHandler)
+
+	// The path "/" matches everything not matched by some other path.
+	http.Handle("/", r)
+	http.ListenAndServe(":" + port, r)
 }
