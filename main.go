@@ -1,7 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/joho/godotenv"
 	"html/template"
 	"log"
 	"net/http"
@@ -13,6 +17,31 @@ var (
 	tplInfo *template.Template
 	tplRegister *template.Template
 )
+
+type Applicant struct{
+	gorm.Model
+	Name string
+	Mobile string
+	Position string
+}
+
+func dbConn() (db *gorm.DB) {
+	dbhost     := os.Getenv("DB_HOST")
+	dbport     := os.Getenv("DB_PORT")
+	dbuser     := os.Getenv("DB_USER")
+	dbpassword := os.Getenv("DB_PASSWORD")
+	dbname     := os.Getenv("DB_NAME")
+
+	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
+		"password=%s dbname=%s sslmode=disable",
+		dbhost, dbport, dbuser, dbpassword, dbname)
+
+	db, err := gorm.Open("postgres", psqlInfo)
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
@@ -35,25 +64,48 @@ func register(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func create(w http.ResponseWriter, r *http.Request) {
+	db := dbConn()
+
+	ap := Applicant{}
+	ap.Name = r.FormValue("name")
+	ap.Mobile = r.FormValue("mobile")
+	ap.Position = r.FormValue("position")
+
+	db.Create(&ap)
+	db.Close()
+}
+
 func faviconHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "/public/images/favicon.ico")
 }
 
+func init() {
+	// loads values from .env into the system
+	if err := godotenv.Load(); err != nil {
+		log.Print("No .env file found")
+	}
+}
+
 func main() {
 	port := os.Getenv("PORT")
-	// port := "5050"
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
+
+	db := dbConn()
+
+	db.AutoMigrate(&Applicant{})
 
 	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
 	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
 	tplRegister = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/register.gohtml"))
 
 	r := mux.NewRouter()
-	r.HandleFunc("/", home)
-	r.HandleFunc("/info", info)
-	r.HandleFunc("/register", register)
+	r.HandleFunc("/", home).Methods("GET")
+	r.HandleFunc("/info", info).Methods("GET")
+	r.HandleFunc("/register", register).Methods("GET")
+	r.HandleFunc("/register", create).Methods("POST")
 
 	// Styles
 	assetHandler := http.FileServer(http.Dir("./dist/"))
@@ -72,7 +124,5 @@ func main() {
 
 	http.HandleFunc("/favicon.ico", faviconHandler)
 
-	// The path "/" matches everything not matched by some other path.
-	http.Handle("/", r)
 	http.ListenAndServe(":" + port, r)
 }
