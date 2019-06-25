@@ -2,6 +2,9 @@ package main
 
 import (
 	"github.com/gorilla/mux"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/joho/godotenv"
 	"html/template"
 	"log"
 	"net/http"
@@ -37,6 +40,13 @@ func register(w http.ResponseWriter, r *http.Request) {
 
 func faviconHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "/public/images/favicon.ico")
+}
+
+func init() {
+	// loads values from .env into the system
+	if err := godotenv.Load(); err != nil {
+		log.Print("No .env file found")
+	}
 }
 
 func main() {
