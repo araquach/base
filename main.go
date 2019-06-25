@@ -64,6 +64,18 @@ func register(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func create(w http.ResponseWriter, r *http.Request) {
+	db := dbConn()
+
+	ap := Applicant{}
+	ap.Name = r.FormValue("name")
+	ap.Mobile = r.FormValue("mobile")
+	ap.Position = r.FormValue("position")
+
+	db.Create(&ap)
+	db.Close()
+}
+
 func faviconHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "/public/images/favicon.ico")
 }
@@ -90,9 +102,10 @@ func main() {
 	tplRegister = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/register.gohtml"))
 
 	r := mux.NewRouter()
-	r.HandleFunc("/", home)
-	r.HandleFunc("/info", info)
-	r.HandleFunc("/register", register)
+	r.HandleFunc("/", home).Methods("GET")
+	r.HandleFunc("/info", info).Methods("GET")
+	r.HandleFunc("/register", register).Methods("GET")
+	r.HandleFunc("/register", create).Methods("POST")
 
 	// Styles
 	assetHandler := http.FileServer(http.Dir("./dist/"))
