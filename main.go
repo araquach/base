@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -16,6 +17,31 @@ var (
 	tplInfo *template.Template
 	tplRegister *template.Template
 )
+
+type Applicant struct{
+	gorm.Model
+	Name string
+	Mobile string
+	Position string
+}
+
+func dbConn() (db *gorm.DB) {
+	dbhost     := os.Getenv("DB_HOST")
+	dbport     := os.Getenv("DB_PORT")
+	dbuser     := os.Getenv("DB_USER")
+	dbpassword := os.Getenv("DB_PASSWORD")
+	dbname     := os.Getenv("DB_NAME")
+
+	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
+		"password=%s dbname=%s sslmode=disable",
+		dbhost, dbport, dbuser, dbpassword, dbname)
+
+	db, err := gorm.Open("postgres", psqlInfo)
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
@@ -51,10 +77,13 @@ func init() {
 
 func main() {
 	port := os.Getenv("PORT")
-	// port := "5050"
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
+
+	db := dbConn()
+
+	db.AutoMigrate(&Applicant{})
 
 	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
 	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
@@ -82,7 +111,5 @@ func main() {
 
 	http.HandleFunc("/favicon.ico", faviconHandler)
 
-	// The path "/" matches everything not matched by some other path.
-	http.Handle("/", r)
 	http.ListenAndServe(":" + port, r)
 }
