@@ -16,6 +16,7 @@ var (
 	tplHome *template.Template
 	tplInfo *template.Template
 	tplRegister *template.Template
+	tplSuccess *template.Template
 )
 
 type Applicant struct{
@@ -74,6 +75,16 @@ func create(w http.ResponseWriter, r *http.Request) {
 
 	db.Create(&ap)
 	db.Close()
+
+	http.Redirect(w, r, "/success", http.StatusSeeOther)
+	return
+}
+
+func success(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	if err := tplSuccess.Execute(w, nil); err != nil {
+		panic(err)
+	}
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request) {
@@ -100,12 +111,14 @@ func main() {
 	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
 	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
 	tplRegister = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/register.gohtml"))
+	tplSuccess = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/success.gohtml"))
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", home).Methods("GET")
 	r.HandleFunc("/info", info).Methods("GET")
 	r.HandleFunc("/register", register).Methods("GET")
 	r.HandleFunc("/register", create).Methods("POST")
+	r.HandleFunc("/success", success).Methods("GET")
 
 	// Styles
 	assetHandler := http.FileServer(http.Dir("./dist/"))

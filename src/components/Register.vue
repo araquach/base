@@ -17,7 +17,7 @@
         <form @submit="checkForm" action="/register" method="post">
 
             <div v-if="errors.length" class="box has-text-danger">
-                <p>Please correct the following error(s):</p>
+                <p><strong>Please correct the following:</strong></p>
                 <ul>
                     <li v-for="error in errors">{{ error }}</li>
                 </ul>
