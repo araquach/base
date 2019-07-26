@@ -17,6 +17,7 @@ var (
 	tplInfo *template.Template
 	tplRegister *template.Template
 	tplSuccess *template.Template
+	tplJoinUs *template.Template
 )
 
 type Applicant struct{
@@ -80,6 +81,13 @@ func create(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
+func joinUs(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	if err := tplJoinUs.Execute(w, nil); err != nil {
+		panic(err)
+	}
+}
+
 func success(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	if err := tplSuccess.Execute(w, nil); err != nil {
@@ -111,6 +119,7 @@ func main() {
 	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
 	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
 	tplRegister = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/register.gohtml"))
+	tplJoinUs = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/joinus.gohtml"))
 	tplSuccess = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/success.gohtml"))
 
 	r := mux.NewRouter()
@@ -118,6 +127,7 @@ func main() {
 	r.HandleFunc("/info", info).Methods("GET")
 	r.HandleFunc("/register", register).Methods("GET")
 	r.HandleFunc("/register", create).Methods("POST")
+	r.HandleFunc("/joinus", joinUs).Methods("GET")
 	r.HandleFunc("/success", success).Methods("GET")
 
 	// Styles
