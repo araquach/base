@@ -15,7 +15,8 @@ import (
 var (
 	tplHome *template.Template
 	tplInfo *template.Template
-	tplRegister *template.Template
+	tplRegisterf *template.Template
+	tplRegistera *template.Template
 	tplSuccess *template.Template
 	tplJoinUs *template.Template
 )
@@ -25,6 +26,7 @@ type Applicant struct{
 	Name string
 	Mobile string
 	Position string
+	Role string
 }
 
 func dbConn() (db *gorm.DB) {
@@ -59,7 +61,14 @@ func info(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func register(w http.ResponseWriter, r *http.Request) {
+func registerf(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	if err := tplRegister.Execute(w, nil); err != nil {
+		panic(err)
+	}
+}
+
+func registera(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	if err := tplRegister.Execute(w, nil); err != nil {
 		panic(err)
@@ -73,6 +82,7 @@ func create(w http.ResponseWriter, r *http.Request) {
 	ap.Name = r.FormValue("name")
 	ap.Mobile = r.FormValue("mobile")
 	ap.Position = r.FormValue("position")
+	ap.Role = r.FormValue("role")
 
 	db.Create(&ap)
 	db.Close()
@@ -118,14 +128,16 @@ func main() {
 
 	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
 	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
-	tplRegister = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/register.gohtml"))
+	tplRegisterf = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registerf.gohtml"))
+	tplRegistera = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registera.gohtml"))
 	tplJoinUs = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/joinus.gohtml"))
 	tplSuccess = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/success.gohtml"))
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", home).Methods("GET")
 	r.HandleFunc("/info", info).Methods("GET")
-	r.HandleFunc("/register", register).Methods("GET")
+	r.HandleFunc("/register", registerf).Methods("GET")
+	r.HandleFunc("/register", registera).Methods("GET")
 	r.HandleFunc("/register", create).Methods("POST")
 	r.HandleFunc("/joinus", joinUs).Methods("GET")
 	r.HandleFunc("/success", success).Methods("GET")
