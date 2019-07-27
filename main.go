@@ -63,14 +63,14 @@ func info(w http.ResponseWriter, r *http.Request) {
 
 func registerf(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	if err := tplRegister.Execute(w, nil); err != nil {
+	if err := tplRegisterf.Execute(w, nil); err != nil {
 		panic(err)
 	}
 }
 
 func registera(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	if err := tplRegister.Execute(w, nil); err != nil {
+	if err := tplRegistera.Execute(w, nil); err != nil {
 		panic(err)
 	}
 }
@@ -137,7 +137,7 @@ func main() {
 	r.HandleFunc("/", home).Methods("GET")
 	r.HandleFunc("/info", info).Methods("GET")
 	r.HandleFunc("/register", registerf).Methods("GET")
-	r.HandleFunc("/register", registera).Methods("GET")
+	r.HandleFunc("/apprentice", registera).Methods("GET")
 	r.HandleFunc("/register", create).Methods("POST")
 	r.HandleFunc("/joinus", joinUs).Methods("GET")
 	r.HandleFunc("/success", success).Methods("GET")
