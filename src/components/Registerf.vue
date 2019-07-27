@@ -50,6 +50,7 @@
                 </div>
             </div>
             <br>
+            <input type="hidden" name="role" value="freelance">
             <div class="field">
                 <div class="control">
                     <button class="button is-primary" type="submit" value="submit">Submit</button>
