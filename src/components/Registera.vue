@@ -41,9 +41,9 @@
                     <div class="select">
                         <select v-model="position" name="position">
                             <option value="default">Please select</option>
-                            <option value="employed">New to hairdressing</option>
-                            <option value="chair renter">Part way through apprenticeship</option>
-                            <option value="mobile">Already qualified</option>
+                            <option value="new">New to hairdressing</option>
+                            <option value="partway through">Part way through apprenticeship</option>
+                            <option value="qualified">Already qualified</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
