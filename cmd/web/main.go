@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/joho/godotenv"
@@ -143,34 +142,7 @@ func main() {
 	tplRegisterf = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registerf.gohtml"))
 	tplSuccess = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/success.gohtml"))
 
-	r := mux.NewRouter()
-	r.HandleFunc("/", home).Methods("GET")
-	r.HandleFunc("/info", info).Methods("GET")
-	r.HandleFunc("/freelance", freelance).Methods("GET")
-	r.HandleFunc("/apprentice", apprentice).Methods("GET")
-	r.HandleFunc("/registera", registera).Methods("GET")
-	r.HandleFunc("/registerf", registerf).Methods("GET")
-	r.HandleFunc("/create", create).Methods("POST")
-	r.HandleFunc("/success", success).Methods("GET")
-
-	// Styles
-	assetHandler := http.FileServer(http.Dir("./dist/"))
-	assetHandler = http.StripPrefix("/dist/", assetHandler)
-	r.PathPrefix("/dist/").Handler(assetHandler)
-
-	// JS
-	jsHandler := http.FileServer(http.Dir("./dist/"))
-	jsHandler = http.StripPrefix("/dist/", jsHandler)
-	r.PathPrefix("/dist/").Handler(jsHandler)
-
-	//Images
-	imageHandler := http.FileServer(http.Dir("./dist/images/"))
-	r.PathPrefix("/dist/images/").Handler(http.StripPrefix("/dist/images/", imageHandler))
-
-
-	http.HandleFunc("/favicon.ico", faviconHandler)
-
 	log.Printf("Starting server on %s", port)
 
-	http.ListenAndServe(":" + port, r)
+	http.ListenAndServe(":" + port, routes())
 }
