@@ -136,10 +136,10 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", home).Methods("GET")
 	r.HandleFunc("/info", info).Methods("GET")
-	r.HandleFunc("/register", registerf).Methods("GET")
-	r.HandleFunc("/apprentice", registera).Methods("GET")
-	r.HandleFunc("/register", create).Methods("POST")
-	r.HandleFunc("/joinus", joinUs).Methods("GET")
+	r.HandleFunc("/freelance", freelance).Methods("GET")
+	r.HandleFunc("/apprentice", apprentice).Methods("GET")
+	r.HandleFunc("/apprentice", freelanceCreate).Methods("POST")
+	r.HandleFunc("/register", apprenticeCreate).Methods("POST")
 	r.HandleFunc("/success", success).Methods("GET")
 
 	// Styles
