@@ -980,7 +980,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "section form-copy" }, [
+  return _c("div", { staticClass: "section copy" }, [
     _c("h1", { staticClass: "is-hidden" }, [
       _vm._v("\n        Base Hairdressing\n    ")
     ]),
@@ -1119,15 +1119,15 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "employed" } }, [
-                    _vm._v("Employed Stylist")
+                    _vm._v("New to hairdressing")
                   ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "chair renter" } }, [
-                    _vm._v("Chair Renter")
+                    _vm._v("Partway through apprenticeship")
                   ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "mobile" } }, [
-                    _vm._v("Mobile Hairdresser")
+                    _vm._v("Already qualified")
                   ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "other" } }, [_vm._v("Other")])
@@ -1213,7 +1213,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "section form-copy" }, [
+  return _c("div", { staticClass: "section copy" }, [
     _c("h1", { staticClass: "is-hidden" }, [
       _vm._v("\n        Base Hairdressing\n    ")
     ]),
