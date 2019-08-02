@@ -11769,16 +11769,16 @@ p {
   margin-top: 3rem;
 }
 
-copy {
+.copy {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-copy ul {
+.copy ul {
   margin-left: 1rem;
   margin-bottom: 2rem;
 }
 
-copy ul li {
+.copy ul li {
   font-size: 1.1rem;
   line-height: 1.5rem;
   list-style-type: square;
