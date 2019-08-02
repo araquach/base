@@ -11770,6 +11770,31 @@ p {
 }
 
 .info-copy {
+<<<<<<< HEAD
+=======
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.info-copy p:last-of-type {
+  font-family: poynter-oldstyle-display, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.info-copy ul {
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-copy ul li {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  list-style-type: square;
+  margin-bottom: 2rem;
+}
+
+.form-copy {
+>>>>>>> parent of d5dcb70... Minor changes
   background-color: rgba(0, 0, 0, 0.6);
 }
 
