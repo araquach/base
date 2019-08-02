@@ -15,10 +15,12 @@ import (
 var (
 	tplHome *template.Template
 	tplInfo *template.Template
+	tplApprentice *template.Template
+	tplFreelance *template.Template
 	tplRegisterf *template.Template
 	tplRegistera *template.Template
 	tplSuccess *template.Template
-	tplJoinUs *template.Template
+
 )
 
 type Applicant struct{
@@ -61,16 +63,16 @@ func info(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func registerf(w http.ResponseWriter, r *http.Request) {
+func registera(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	if err := tplRegisterf.Execute(w, nil); err != nil {
+	if err := tplRegistera.Execute(w, nil); err != nil {
 		panic(err)
 	}
 }
 
-func registera(w http.ResponseWriter, r *http.Request) {
+func registerf(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	if err := tplRegistera.Execute(w, nil); err != nil {
+	if err := tplRegisterf.Execute(w, nil); err != nil {
 		panic(err)
 	}
 }
@@ -91,9 +93,16 @@ func create(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func joinUs(w http.ResponseWriter, r *http.Request) {
+func apprentice(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	if err := tplJoinUs.Execute(w, nil); err != nil {
+	if err := tplApprentice.Execute(w, nil); err != nil {
+		panic(err)
+	}
+}
+
+func freelance(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	if err := tplFreelance.Execute(w, nil); err != nil {
 		panic(err)
 	}
 }
@@ -128,18 +137,20 @@ func main() {
 
 	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
 	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
-	tplRegisterf = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registerf.gohtml"))
+	tplApprentice = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/apprentice.gohtml"))
+	tplFreelance = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/freelance.gohtml"))
 	tplRegistera = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registera.gohtml"))
-	tplJoinUs = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/joinus.gohtml"))
+	tplRegisterf = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registerf.gohtml"))
 	tplSuccess = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/success.gohtml"))
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", home).Methods("GET")
 	r.HandleFunc("/info", info).Methods("GET")
-	r.HandleFunc("/register", registerf).Methods("GET")
-	r.HandleFunc("/apprentice", registera).Methods("GET")
-	r.HandleFunc("/register", create).Methods("POST")
-	r.HandleFunc("/joinus", joinUs).Methods("GET")
+	r.HandleFunc("/freelance", freelance).Methods("GET")
+	r.HandleFunc("/apprentice", apprentice).Methods("GET")
+	r.HandleFunc("/registera", registera).Methods("GET")
+	r.HandleFunc("/registerf", registerf).Methods("GET")
+	r.HandleFunc("/create", create).Methods("POST")
 	r.HandleFunc("/success", success).Methods("GET")
 
 	// Styles
@@ -158,6 +169,8 @@ func main() {
 
 
 	http.HandleFunc("/favicon.ico", faviconHandler)
+
+	log.Printf("Starting server on %s", port)
 
 	http.ListenAndServe(":" + port, r)
 }
