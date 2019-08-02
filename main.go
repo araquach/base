@@ -148,8 +148,8 @@ func main() {
 	r.HandleFunc("/info", info).Methods("GET")
 	r.HandleFunc("/apprentice", apprentice).Methods("GET")
 	r.HandleFunc("/freelance", freelance).Methods("GET")
-	r.HandleFunc("/register", registerf).Methods("GET")
-	r.HandleFunc("/apprentice", registera).Methods("GET")
+	r.HandleFunc("/registera", registera).Methods("GET")
+	r.HandleFunc("/registerf", registerf).Methods("GET")
 	r.HandleFunc("/register", create).Methods("POST")
 	r.HandleFunc("/success", success).Methods("GET")
 
