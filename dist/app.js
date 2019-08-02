@@ -816,11 +816,7 @@ var staticRenderFns = [
       _c(
         "h2",
         { staticClass: "subtitle is-3 has-text-white has-text-centered" },
-        [
-          _vm._v(
-            "\n        Base Hairdressing is a hub for ultra talented freelance hairdressers and a training academy for the next generation of super skilled stylists\n    "
-          )
-        ]
+        [_vm._v("\n        Be a part of our incredible new venture!\n    ")]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "has-text-centered" }, [
@@ -913,12 +909,6 @@ var staticRenderFns = [
         )
       ]),
       _vm._v(" "),
-      _c("figure", { staticClass: "image" }, [
-        _c("img", {
-          attrs: { src: "dist/images/base_team_2.jpg", alt: "The Base Team" }
-        })
-      ]),
-      _vm._v(" "),
       _c(
         "h2",
         { staticClass: "subtitle is-4 has-text-white has-text-centered" },
@@ -990,7 +980,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "section copy" }, [
+  return _c("div", { staticClass: "section form-copy" }, [
     _c("h1", { staticClass: "is-hidden" }, [
       _vm._v("\n        Base Hairdressing\n    ")
     ]),
@@ -1128,16 +1118,16 @@ var render = function() {
                     _vm._v("Please select")
                   ]),
                   _vm._v(" "),
-                  _c("option", { attrs: { value: "new" } }, [
-                    _vm._v("New to hairdressing")
+                  _c("option", { attrs: { value: "employed" } }, [
+                    _vm._v("Employed Stylist")
                   ]),
                   _vm._v(" "),
-                  _c("option", { attrs: { value: "partway through" } }, [
-                    _vm._v("Part way through apprenticeship")
+                  _c("option", { attrs: { value: "chair renter" } }, [
+                    _vm._v("Chair Renter")
                   ]),
                   _vm._v(" "),
-                  _c("option", { attrs: { value: "qualified" } }, [
-                    _vm._v("Already qualified")
+                  _c("option", { attrs: { value: "mobile" } }, [
+                    _vm._v("Mobile Hairdresser")
                   ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "other" } }, [_vm._v("Other")])
@@ -1223,7 +1213,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "section copy" }, [
+  return _c("div", { staticClass: "section form-copy" }, [
     _c("h1", { staticClass: "is-hidden" }, [
       _vm._v("\n        Base Hairdressing\n    ")
     ]),
@@ -13973,8 +13963,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/adam-macbook/GoSites/base/src/app.js */"./src/app.js");
-module.exports = __webpack_require__(/*! /Users/adam-macbook/GoSites/base/src/app.scss */"./src/app.scss");
+__webpack_require__(/*! /Users/adam-macbook/go/src/base/src/app.js */"./src/app.js");
+module.exports = __webpack_require__(/*! /Users/adam-macbook/go/src/base/src/app.scss */"./src/app.scss");
 
 
 /***/ })

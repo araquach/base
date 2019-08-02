@@ -19,11 +19,6 @@
             for anyone who wants to work in a cutting edge environment with the best equipment on hand. </p>
         <p>Close to the new multi storey car park, the site was previously a successful salon for 15 years.</p>
 
-        <figure class="image">
-            <img src="dist/images/base_team_2.jpg" alt="The Base Team">
-        </figure>
-
-
         <h2 class="subtitle is-4 has-text-white has-text-centered">Check out the benefits of being a part of Base</h2>
 
         <ul>
