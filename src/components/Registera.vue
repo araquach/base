@@ -1,5 +1,5 @@
 <template>
-    <div class="section form-copy">
+    <div class="section copy">
         <h1 class="is-hidden">
             Base Hairdressing
         </h1>
@@ -41,9 +41,9 @@
                     <div class="select">
                         <select v-model="position" name="position">
                             <option value="default">Please select</option>
-                            <option value="employed">Employed Stylist</option>
-                            <option value="chair renter">Chair Renter</option>
-                            <option value="mobile">Mobile Hairdresser</option>
+                            <option value="new">New to hairdressing</option>
+                            <option value="partway through">Part way through apprenticeship</option>
+                            <option value="qualified">Already qualified</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
