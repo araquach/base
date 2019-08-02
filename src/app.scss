@@ -30,16 +30,8 @@ p {
   }
 }
 
-.info-copy {
-<<<<<<< HEAD
-=======
+copy {
   background-color: rgba(0, 0, 0, .6);
-
-  p:last-of-type {
-    font-family: poynter-oldstyle-display, serif;
-    font-weight: 400;
-    font-style: normal;;
-  }
 
   ul {
     margin-left: 1rem;
@@ -51,33 +43,4 @@ p {
       margin-bottom: 2rem;
     }
   }
-}
-
-.form-copy {
->>>>>>> parent of d169c71... FIxed up more of the pages
-  background-color: rgba(0, 0, 0, .6);
-<<<<<<< HEAD
-
-  p:last-of-type {
-    font-family: poynter-oldstyle-display, serif;
-    font-weight: 400;
-    font-style: normal;;
-  }
-
-  ul {
-    margin-left: 1rem;
-    margin-bottom: 2rem;
-    li {
-      font-size: 1.1rem;
-      line-height: 1.5rem;
-      list-style-type: square;
-      margin-bottom: 2rem;
-    }
-  }
-}
-
-.form-copy {
-  background-color: rgba(0, 0, 0, .6);
-=======
->>>>>>> parent of 26c9bf7... Finished the changes
 }
