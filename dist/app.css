@@ -11773,6 +11773,7 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+<<<<<<< HEAD
 .info-copy p:last-of-type {
   font-family: poynter-oldstyle-display, serif;
   font-weight: 400;
@@ -11795,3 +11796,5 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+=======
+>>>>>>> parent of 26c9bf7... Finished the changes
