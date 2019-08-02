@@ -30,27 +30,16 @@ p {
   }
 }
 
-.info-copy {
+.copy {
   background-color: rgba(0, 0, 0, .6);
-
-  p:last-of-type {
-    font-family: poynter-oldstyle-display, serif;
-    font-weight: 400;
-    font-style: normal;;
-  }
 
   ul {
-    margin-left: 1rem;
     margin-bottom: 2rem;
-    li {
-      font-size: 1.1rem;
-      line-height: 1.5rem;
-      list-style-type: square;
-      margin-bottom: 2rem;
-    }
   }
-}
 
-.form-copy {
-  background-color: rgba(0, 0, 0, .6);
+  li {
+    margin-bottom: 1rem;
+    list-style-type: square;
+    list-style-position: inside;
+  }
 }
