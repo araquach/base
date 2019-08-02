@@ -137,10 +137,16 @@ func main() {
 
 	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
 	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
+<<<<<<< HEAD
 	tplApprentice = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/apprentice.gohtml"))
 	tplFreelance = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/freelance.gohtml"))
 	tplRegistera = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registera.gohtml"))
 	tplRegisterf = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registerf.gohtml"))
+=======
+	tplRegisterf = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registerf.gohtml"))
+	tplRegistera = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registera.gohtml"))
+	tplJoinUs = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/joinus.gohtml"))
+>>>>>>> parent of aee7966... added a new info page
 	tplSuccess = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/success.gohtml"))
 
 	r := mux.NewRouter()
