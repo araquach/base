@@ -816,7 +816,11 @@ var staticRenderFns = [
       _c(
         "h2",
         { staticClass: "subtitle is-3 has-text-white has-text-centered" },
-        [_vm._v("\n        Be a part of our incredible new venture!\n    ")]
+        [
+          _vm._v(
+            "\n        Base Hairdressing is a hub for ultra talented freelance hairdressers and a training academy for the next generation of super skilled stylists\n    "
+          )
+        ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "has-text-centered" }, [
