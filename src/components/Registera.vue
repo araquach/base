@@ -1,5 +1,5 @@
 <template>
-    <div class="section form-copy">
+    <div class="section copy">
         <h1 class="is-hidden">
             Base Hairdressing
         </h1>

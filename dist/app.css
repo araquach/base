@@ -11773,3 +11773,13 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.copy ul {
+  margin-bottom: 2rem;
+}
+
+.copy li {
+  margin-bottom: 1rem;
+  list-style-type: square;
+  list-style-position: inside;
+}
+

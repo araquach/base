@@ -32,4 +32,14 @@ p {
 
 .copy {
   background-color: rgba(0, 0, 0, .6);
+
+  ul {
+    margin-bottom: 2rem;
+  }
+
+  li {
+    margin-bottom: 1rem;
+    list-style-type: square;
+    list-style-position: inside;
+  }
 }
