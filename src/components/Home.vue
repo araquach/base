@@ -7,7 +7,7 @@
             <img src="dist/images/base_logo.svg" alt="Base Hairdressing">
         </figure>
         <h2 class="subtitle is-3 has-text-white has-text-centered">
-            Base Hairdressing is a hub for ultra talented freelance hairdressers and a training academy for the next generation of super skilled stylists
+            Be a part of our incredible new venture!
         </h2>
         <div class="has-text-centered">
             <br>
