@@ -1,8 +1,7 @@
-package main
+package base
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/joho/godotenv"
@@ -126,6 +125,8 @@ func init() {
 }
 
 func main() {
+	r := 
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("$PORT must be set")
@@ -137,44 +138,11 @@ func main() {
 
 	tplHome = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/home.gohtml"))
 	tplInfo = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/info.gohtml"))
-<<<<<<< HEAD
 	tplApprentice = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/apprentice.gohtml"))
 	tplFreelance = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/freelance.gohtml"))
 	tplRegistera = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registera.gohtml"))
 	tplRegisterf = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registerf.gohtml"))
-=======
-	tplRegisterf = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registerf.gohtml"))
-	tplRegistera = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/registera.gohtml"))
-	tplJoinUs = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/joinus.gohtml"))
->>>>>>> parent of aee7966... added a new info page
 	tplSuccess = template.Must(template.ParseFiles("views/layouts/main.gohtml", "views/pages/success.gohtml"))
-
-	r := mux.NewRouter()
-	r.HandleFunc("/", home).Methods("GET")
-	r.HandleFunc("/info", info).Methods("GET")
-	r.HandleFunc("/freelance", freelance).Methods("GET")
-	r.HandleFunc("/apprentice", apprentice).Methods("GET")
-	r.HandleFunc("/registera", registera).Methods("GET")
-	r.HandleFunc("/registerf", registerf).Methods("GET")
-	r.HandleFunc("/create", create).Methods("POST")
-	r.HandleFunc("/success", success).Methods("GET")
-
-	// Styles
-	assetHandler := http.FileServer(http.Dir("./dist/"))
-	assetHandler = http.StripPrefix("/dist/", assetHandler)
-	r.PathPrefix("/dist/").Handler(assetHandler)
-
-	// JS
-	jsHandler := http.FileServer(http.Dir("./dist/"))
-	jsHandler = http.StripPrefix("/dist/", jsHandler)
-	r.PathPrefix("/dist/").Handler(jsHandler)
-
-	//Images
-	imageHandler := http.FileServer(http.Dir("./dist/images/"))
-	r.PathPrefix("/dist/images/").Handler(http.StripPrefix("/dist/images/", imageHandler))
-
-
-	http.HandleFunc("/favicon.ico", faviconHandler)
 
 	log.Printf("Starting server on %s", port)
 
