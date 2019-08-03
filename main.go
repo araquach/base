@@ -152,6 +152,8 @@ func main() {
 	r.HandleFunc("/registerf", registerf).Methods("GET")
 	r.HandleFunc("/register", create).Methods("POST")
 	r.HandleFunc("/success", success).Methods("GET")
+	// temporary link for FB ad
+	r.HandleFunc("/joinus", apprentice).Methods("GET")
 
 	// Styles
 	assetHandler := http.FileServer(http.Dir("./dist/"))
