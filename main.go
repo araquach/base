@@ -1,15 +1,18 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/joho/godotenv"
+	"github.com/mailgun/mailgun-go/v3"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 var (
@@ -88,6 +91,28 @@ func create(w http.ResponseWriter, r *http.Request) {
 
 	db.Create(&ap)
 	db.Close()
+
+	mg := mailgun.NewMailgun("jakatasalon.co.uk", "key-7bdc914427016c8714ed8ef2108a5a49")
+
+	sender := "adam@jakatasalon.co.uk"
+	subject := "Base Applicant"
+	body := "There is a new applicant for Base Hairdressing"
+	recipient := "adam@jakatasalon.co.uk"
+
+	// The message object allows you to add attachments and Bcc recipients
+	message := mg.NewMessage(sender, subject, body, recipient)
+
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+	defer cancel()
+
+	// Send the message	with a 10 second timeout
+	resp, id, err := mg.Send(ctx, message)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("ID: %s Resp: %s\n", id, resp)
 
 	http.Redirect(w, r, "/success", http.StatusSeeOther)
 	return
