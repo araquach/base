@@ -92,7 +92,7 @@ func create(w http.ResponseWriter, r *http.Request) {
 	db.Create(&ap)
 	db.Close()
 
-	mg := mailgun.NewMailgun("jakatasalon.co.uk", "key-7bdc914427016c8714ed8ef2108a5a49")
+	mg := mailgun.NewMailgun(os.Getenv("MAILGUN_DOMAIN"), os.Getenv("MAILGUN_KEY"))
 
 	sender := "adam@jakatasalon.co.uk"
 	subject := "Base Applicant"
