@@ -23,7 +23,6 @@ var (
 	tplRegisterf *template.Template
 	tplRegistera *template.Template
 	tplSuccess *template.Template
-
 )
 
 type Applicant struct{
@@ -50,45 +49,6 @@ func dbConn() (db *gorm.DB) {
 		panic(err)
 	}
 	return db
-}
-
-func SendMessageWithTemplate(domain, apiKey string) error {
-	mg := mailgun.NewMailgun(domain, apiKey)
-	var err error
-
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*30)
-	defer cancel()
-
-	// Create a new template
-	err = mg.CreateTemplate(ctx, &mailgun.Template{
-		Name: "my-template",
-		Version: mailgun.TemplateVersion{
-			Template: `<div class="entry"> <h1>{{.title}}</h1> <div class="body"> {{.body}} </div> </div>`,
-			Engine:   mailgun.TemplateEngineGo,
-			Tag:      "v1",
-		},
-	})
-	if err != nil {
-		return err
-	}
-
-	// Give time for template to show up in the system.
-	time.Sleep(time.Second * 1)
-
-	// Create a new message with template
-	m := mg.NewMessage("Excited User <excited@jakatasalon.co.uk>", "Template example", "")
-	m.SetTemplate("my-template")
-
-	// Add recipients
-	m.AddRecipient("adam@jakatasalon.co.uk")
-
-	// Add the variables to be used by the template
-	m.AddVariable("title", "Hello Templates")
-	m.AddVariable("body", "Body of the message")
-
-	_, id, err := mg.Send(ctx, m)
-	fmt.Printf("Queued: %s", id)
-	return err
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
@@ -131,29 +91,27 @@ func create(w http.ResponseWriter, r *http.Request) {
 	db.Create(&ap)
 	db.Close()
 
-	SendMessageWithTemplate("jakatasalon.co.uk", "key-7bdc914427016c8714ed8ef2108a5a49")
+	mg := mailgun.NewMailgun("jakatasalon.co.uk", "key-7bdc914427016c8714ed8ef2108a5a49")
 
-	//mg := mailgun.NewMailgun("jakatasalon.co.uk", "key-7bdc914427016c8714ed8ef2108a5a49")
-	//
-	//sender := "adam@jakatasalon.co.uk"
-	//subject := "Base Applicant"
-	//body := "There is a new applicant for Base Hairdressing"
-	//recipient := "adam@jakatasalon.co.uk"
-	//
-	//// The message object allows you to add attachments and Bcc recipients
-	//message := mg.NewMessage(sender, subject, body, recipient)
-	//
-	//ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
-	//defer cancel()
-	//
-	//// Send the message	with a 10 second timeout
-	//resp, id, err := mg.Send(ctx, message)
-	//
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//
-	//fmt.Printf("ID: %s Resp: %s\n", id, resp)
+	sender := "adam@jakatasalon.co.uk"
+	subject := "Base Applicant"
+	body := "There is a new applicant for Base Hairdressing"
+	recipient := "adam@jakatasalon.co.uk"
+
+	// The message object allows you to add attachments and Bcc recipients
+	message := mg.NewMessage(sender, subject, body, recipient)
+
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+	defer cancel()
+
+	// Send the message	with a 10 second timeout
+	resp, id, err := mg.Send(ctx, message)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("ID: %s Resp: %s\n", id, resp)
 
 	http.Redirect(w, r, "/success", http.StatusSeeOther)
 	return
