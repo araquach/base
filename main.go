@@ -23,7 +23,6 @@ var (
 	tplRegisterf *template.Template
 	tplRegistera *template.Template
 	tplSuccess *template.Template
-
 )
 
 type Applicant struct{
